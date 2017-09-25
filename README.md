@@ -1,4 +1,9 @@
-# Microblog
+# Microblog (CS4550 hw03)
+
+link to github repo: https://github.com/ChristineTChen/CS4550-hw03.git
+
+link to deployed app: microblog.christinetchen.com
+	to see the messages/posts: microblog.christinetchen.com/posts
 
 To start your Phoenix server:
 
