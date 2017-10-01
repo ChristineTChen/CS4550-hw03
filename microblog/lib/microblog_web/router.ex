@@ -20,7 +20,7 @@ defmodule MicroblogWeb.Router do
     resources "/users", UserController
     resources "/follows", FollowController
     resources "/hashtags", HashtagController
-
+    resources "/tagposts", TagpostController
     get "/", PageController, :index
   end
 

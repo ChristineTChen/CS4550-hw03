@@ -1,0 +1,8 @@
+<h2>Show Tagpost</h2>
+
+<ul>
+
+</ul>
+
+<span><%= link "Edit", to: tagpost_path(@conn, :edit, @tagpost) %></span>
+<span><%= link "Back", to: tagpost_path(@conn, :index) %></span>

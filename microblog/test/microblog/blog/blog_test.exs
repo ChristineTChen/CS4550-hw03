@@ -248,4 +248,62 @@ defmodule Microblog.BlogTest do
       assert %Ecto.Changeset{} = Blog.change_hashtag(hashtag)
     end
   end
+
+  describe "tagposts" do
+    alias Microblog.Blog.Tagpost
+
+    @valid_attrs %{}
+    @update_attrs %{}
+    @invalid_attrs %{}
+
+    def tagpost_fixture(attrs \\ %{}) do
+      {:ok, tagpost} =
+        attrs
+        |> Enum.into(@valid_attrs)
+        |> Blog.create_tagpost()
+
+      tagpost
+    end
+
+    test "list_tagposts/0 returns all tagposts" do
+      tagpost = tagpost_fixture()
+      assert Blog.list_tagposts() == [tagpost]
+    end
+
+    test "get_tagpost!/1 returns the tagpost with given id" do
+      tagpost = tagpost_fixture()
+      assert Blog.get_tagpost!(tagpost.id) == tagpost
+    end
+
+    test "create_tagpost/1 with valid data creates a tagpost" do
+      assert {:ok, %Tagpost{} = tagpost} = Blog.create_tagpost(@valid_attrs)
+    end
+
+    test "create_tagpost/1 with invalid data returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = Blog.create_tagpost(@invalid_attrs)
+    end
+
+    test "update_tagpost/2 with valid data updates the tagpost" do
+      tagpost = tagpost_fixture()
+      assert {:ok, tagpost} = Blog.update_tagpost(tagpost, @update_attrs)
+      assert %Tagpost{} = tagpost
+    end
+
+    test "update_tagpost/2 with invalid data returns error changeset" do
+      tagpost = tagpost_fixture()
+      assert {:error, %Ecto.Changeset{}} = Blog.update_tagpost(tagpost, @invalid_attrs)
+      assert tagpost == Blog.get_tagpost!(tagpost.id)
+    end
+
+    test "delete_tagpost/1 deletes the tagpost" do
+      tagpost = tagpost_fixture()
+      assert {:ok, %Tagpost{}} = Blog.delete_tagpost(tagpost)
+      assert_raise Ecto.NoResultsError, fn -> Blog.get_tagpost!(tagpost.id) end
+    end
+
+    test "change_tagpost/1 returns a tagpost changeset" do
+      tagpost = tagpost_fixture()
+      assert %Ecto.Changeset{} = Blog.change_tagpost(tagpost)
+    end
+  end
 end

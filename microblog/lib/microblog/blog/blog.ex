@@ -197,4 +197,100 @@ defmodule Microblog.Blog do
   def change_hashtag(%Hashtag{} = hashtag) do
     Hashtag.changeset(hashtag, %{})
   end
+
+  alias Microblog.Blog.Tagpost
+
+  @doc """
+  Returns the list of tagposts.
+
+  ## Examples
+
+      iex> list_tagposts()
+      [%Tagpost{}, ...]
+
+  """
+  def list_tagposts do
+    Repo.all(Tagpost)
+  end
+
+  @doc """
+  Gets a single tagpost.
+
+  Raises `Ecto.NoResultsError` if the Tagpost does not exist.
+
+  ## Examples
+
+      iex> get_tagpost!(123)
+      %Tagpost{}
+
+      iex> get_tagpost!(456)
+      ** (Ecto.NoResultsError)
+
+  """
+  def get_tagpost!(id), do: Repo.get!(Tagpost, id)
+
+  @doc """
+  Creates a tagpost.
+
+  ## Examples
+
+      iex> create_tagpost(%{field: value})
+      {:ok, %Tagpost{}}
+
+      iex> create_tagpost(%{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def create_tagpost(attrs \\ %{}) do
+    %Tagpost{}
+    |> Tagpost.changeset(attrs)
+    |> Repo.insert()
+  end
+
+  @doc """
+  Updates a tagpost.
+
+  ## Examples
+
+      iex> update_tagpost(tagpost, %{field: new_value})
+      {:ok, %Tagpost{}}
+
+      iex> update_tagpost(tagpost, %{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def update_tagpost(%Tagpost{} = tagpost, attrs) do
+    tagpost
+    |> Tagpost.changeset(attrs)
+    |> Repo.update()
+  end
+
+  @doc """
+  Deletes a Tagpost.
+
+  ## Examples
+
+      iex> delete_tagpost(tagpost)
+      {:ok, %Tagpost{}}
+
+      iex> delete_tagpost(tagpost)
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def delete_tagpost(%Tagpost{} = tagpost) do
+    Repo.delete(tagpost)
+  end
+
+  @doc """
+  Returns an `%Ecto.Changeset{}` for tracking tagpost changes.
+
+  ## Examples
+
+      iex> change_tagpost(tagpost)
+      %Ecto.Changeset{source: %Tagpost{}}
+
+  """
+  def change_tagpost(%Tagpost{} = tagpost) do
+    Tagpost.changeset(tagpost, %{})
+  end
 end

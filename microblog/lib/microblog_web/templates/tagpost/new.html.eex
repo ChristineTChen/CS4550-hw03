@@ -1,0 +1,5 @@
+<h2>New Tagpost</h2>
+
+<%= render "form.html", Map.put(assigns, :action, tagpost_path(@conn, :create)) %>
+
+<span><%= link "Back", to: tagpost_path(@conn, :index) %></span>
