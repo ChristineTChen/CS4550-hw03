@@ -17,6 +17,8 @@ defmodule MicroblogWeb.Router do
     pipe_through :browser # Use the default browser stack
 
     resources "/posts", PostController
+    resources "/users", UserController
+    resources "/followers", FollowerController
 
     get "/", PageController, :index
   end

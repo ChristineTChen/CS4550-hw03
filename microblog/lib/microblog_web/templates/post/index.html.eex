@@ -4,8 +4,6 @@
   <thead>
     <tr>
       <th>Title</th>
-      <th>Authorid</th>
-      <th>Date</th>
       <th>Content</th>
 
       <th></th>
@@ -15,8 +13,6 @@
 <%= for post <- @posts do %>
     <tr>
       <td><%= post.title %></td>
-      <td><%= post.authorId %></td>
-      <td><%= post.date %></td>
       <td><%= post.content %></td>
 
       <td class="text-right">

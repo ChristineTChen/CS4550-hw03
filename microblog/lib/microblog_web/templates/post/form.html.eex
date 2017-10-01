@@ -12,18 +12,6 @@
   </div>
 
   <div class="form-group">
-    <%= label f, :authorId, class: "control-label" %>
-    <%= text_input f, :authorId, class: "form-control" %>
-    <%= error_tag f, :authorId %>
-  </div>
-
-  <div class="form-group">
-    <%= label f, :date, class: "control-label" %>
-    <%= datetime_select f, :date, class: "form-control" %>
-    <%= error_tag f, :date %>
-  </div>
-
-  <div class="form-group">
     <%= label f, :content, class: "control-label" %>
     <%= textarea f, :content, class: "form-control" %>
     <%= error_tag f, :content %>

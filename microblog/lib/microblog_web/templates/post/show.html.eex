@@ -8,16 +8,6 @@
   </li>
 
   <li>
-    <strong>Authorid:</strong>
-    <%= @post.authorId %>
-  </li>
-
-  <li>
-    <strong>Date:</strong>
-    <%= @post.date %>
-  </li>
-
-  <li>
     <strong>Content:</strong>
     <%= @post.content %>
   </li>

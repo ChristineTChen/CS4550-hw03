@@ -3,9 +3,9 @@ defmodule MicroblogWeb.PostControllerTest do
 
   alias Microblog.Blog
 
-  @create_attrs %{authorId: "some authorId", content: "some content", date: "2010-04-17 14:00:00.000000Z", title: "some title"}
-  @update_attrs %{authorId: "some updated authorId", content: "some updated content", date: "2011-05-18 15:01:01.000000Z", title: "some updated title"}
-  @invalid_attrs %{authorId: nil, content: nil, date: nil, title: nil}
+  @create_attrs %{content: "some content", title: "some title"}
+  @update_attrs %{content: "some updated content", title: "some updated title"}
+  @invalid_attrs %{content: nil, title: nil}
 
   def fixture(:post) do
     {:ok, post} = Blog.create_post(@create_attrs)
@@ -60,7 +60,7 @@ defmodule MicroblogWeb.PostControllerTest do
       assert redirected_to(conn) == post_path(conn, :show, post)
 
       conn = get conn, post_path(conn, :show, post)
-      assert html_response(conn, 200) =~ "some updated authorId"
+      assert html_response(conn, 200) =~ "some updated content"
     end
 
     test "renders errors when data is invalid", %{conn: conn, post: post} do
