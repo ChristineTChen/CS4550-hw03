@@ -3,9 +3,9 @@ defmodule MicroblogWeb.HashtagControllerTest do
 
   alias Microblog.Blog
 
-  @create_attrs %{}
-  @update_attrs %{}
-  @invalid_attrs %{}
+  @create_attrs %{tag_name: "some tag_name"}
+  @update_attrs %{tag_name: "some updated tag_name"}
+  @invalid_attrs %{tag_name: nil}
 
   def fixture(:hashtag) do
     {:ok, hashtag} = Blog.create_hashtag(@create_attrs)
@@ -60,7 +60,7 @@ defmodule MicroblogWeb.HashtagControllerTest do
       assert redirected_to(conn) == hashtag_path(conn, :show, hashtag)
 
       conn = get conn, hashtag_path(conn, :show, hashtag)
-      assert html_response(conn, 200)
+      assert html_response(conn, 200) =~ "some updated tag_name"
     end
 
     test "renders errors when data is invalid", %{conn: conn, hashtag: hashtag} do

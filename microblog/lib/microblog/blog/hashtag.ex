@@ -5,8 +5,7 @@ defmodule Microblog.Blog.Hashtag do
 
 
   schema "hashtags" do
-    field :hashtag_id, :id
-    field :post_id, :id
+    field :tag_name, :string
 
     timestamps()
   end
@@ -14,7 +13,7 @@ defmodule Microblog.Blog.Hashtag do
   @doc false
   def changeset(%Hashtag{} = hashtag, attrs) do
     hashtag
-    |> cast(attrs, [])
-    |> validate_required([])
+    |> cast(attrs, [:tag_name])
+    |> validate_required([:tag_name])
   end
 end

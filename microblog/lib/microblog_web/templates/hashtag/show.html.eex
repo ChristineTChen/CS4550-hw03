@@ -2,6 +2,11 @@
 
 <ul>
 
+  <li>
+    <strong>Tag name:</strong>
+    <%= @hashtag.tag_name %>
+  </li>
+
 </ul>
 
 <span><%= link "Edit", to: hashtag_path(@conn, :edit, @hashtag) %></span>
