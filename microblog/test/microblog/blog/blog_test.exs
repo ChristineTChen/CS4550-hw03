@@ -130,4 +130,62 @@ defmodule Microblog.BlogTest do
       assert %Ecto.Changeset{} = Blog.change_post(post)
     end
   end
+
+  describe "hashtags" do
+    alias Microblog.Blog.Hashtag
+
+    @valid_attrs %{}
+    @update_attrs %{}
+    @invalid_attrs %{}
+
+    def hashtag_fixture(attrs \\ %{}) do
+      {:ok, hashtag} =
+        attrs
+        |> Enum.into(@valid_attrs)
+        |> Blog.create_hashtag()
+
+      hashtag
+    end
+
+    test "list_hashtags/0 returns all hashtags" do
+      hashtag = hashtag_fixture()
+      assert Blog.list_hashtags() == [hashtag]
+    end
+
+    test "get_hashtag!/1 returns the hashtag with given id" do
+      hashtag = hashtag_fixture()
+      assert Blog.get_hashtag!(hashtag.id) == hashtag
+    end
+
+    test "create_hashtag/1 with valid data creates a hashtag" do
+      assert {:ok, %Hashtag{} = hashtag} = Blog.create_hashtag(@valid_attrs)
+    end
+
+    test "create_hashtag/1 with invalid data returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = Blog.create_hashtag(@invalid_attrs)
+    end
+
+    test "update_hashtag/2 with valid data updates the hashtag" do
+      hashtag = hashtag_fixture()
+      assert {:ok, hashtag} = Blog.update_hashtag(hashtag, @update_attrs)
+      assert %Hashtag{} = hashtag
+    end
+
+    test "update_hashtag/2 with invalid data returns error changeset" do
+      hashtag = hashtag_fixture()
+      assert {:error, %Ecto.Changeset{}} = Blog.update_hashtag(hashtag, @invalid_attrs)
+      assert hashtag == Blog.get_hashtag!(hashtag.id)
+    end
+
+    test "delete_hashtag/1 deletes the hashtag" do
+      hashtag = hashtag_fixture()
+      assert {:ok, %Hashtag{}} = Blog.delete_hashtag(hashtag)
+      assert_raise Ecto.NoResultsError, fn -> Blog.get_hashtag!(hashtag.id) end
+    end
+
+    test "change_hashtag/1 returns a hashtag changeset" do
+      hashtag = hashtag_fixture()
+      assert %Ecto.Changeset{} = Blog.change_hashtag(hashtag)
+    end
+  end
 end
