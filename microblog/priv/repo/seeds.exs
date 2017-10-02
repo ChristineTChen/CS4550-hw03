@@ -17,9 +17,9 @@ alias Microblog.Blog.Post
 alias Microblog.Blog.Hashtag
 alias Microblog.Blog.Tagpost
 
-#Repo.delete_all(User)
 Repo.delete_all(Follow)
-#Repo.delete_all(Post)
+Repo.delete_all(Post)
+Repo.delete_all(User)
 Repo.delete_all(Hashtag)
 Repo.delete_all(Tagpost)
 
