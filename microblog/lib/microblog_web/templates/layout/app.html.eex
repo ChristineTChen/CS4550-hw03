@@ -16,10 +16,12 @@
       <header class="header">
         <nav role="navigation">
           <ul class="nav nav-pills pull-right">
-            <li><a href="http://www.phoenixframework.org/docs">Get Started</a></li>
+            <%= link "Users", to: user_path(@conn, :index), class: "nav-link" %>
+	    <%= link "Posts", to: post_path(@conn, :index), class: "nav-link" %>            
           </ul>
+
         </nav>
-        <span class="logo"></span>
+        
       </header>
 
     <%= if get_flash(@conn, :info) do %>
@@ -27,13 +29,13 @@
     <% end %>
     <%= if get_flash(@conn, :error) do %>
       <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
-    <%= end %>
+    <% end %>
 
       <main role="main">
         <%= render @view_module, @view_template, assigns %>
       </main>
      
-      <%= link "Users", to: user_path(@conn, :index), class: "nav-link" %>
+      
     </div> <!-- /container -->
     <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
   </body>

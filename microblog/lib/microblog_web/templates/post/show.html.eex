@@ -1,18 +1,25 @@
-<h2>Show Post</h2>
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><%= link("Posts", to: post_path(@conn, :index)) %></li>
+  <li class="breadcrumb-item active"><%= @post.title %></li>
+</ol>
+<h2><%= @post.title %></h2>
 
-<ul>
+<div>
+ 
+  <div>
+    <p>Posted by
+    <%= @post.user_id %>
+    </p>
+  </div>
 
-  <li>
-    <strong>Title:</strong>
-    <%= @post.title %>
-  </li>
-
-  <li>
-    <strong>Content:</strong>
+  <div>
+    <p>
     <%= @post.content %>
-  </li>
+    </p>
+  </div>
 
-</ul>
+</div>
 
-<span><%= link "Edit", to: post_path(@conn, :edit, @post) %></span>
-<span><%= link "Back", to: post_path(@conn, :index) %></span>
+
+
+<span><%= link "Back", to: post_path(@conn, :index), class: "btn btn-link" %></span>
