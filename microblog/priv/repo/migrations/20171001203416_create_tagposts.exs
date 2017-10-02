@@ -3,8 +3,8 @@ defmodule Microblog.Repo.Migrations.CreateTagposts do
 
   def change do
     create table(:tagposts) do
-      add :hashtag_id, references(:hashtags, on_delete: :nothing)
-      add :post_id, references(:posts, on_delete: :nothing)
+      add :hashtag_id, references(:hashtags, on_delete: :delete_all)
+      add :post_id, references(:posts, on_delete: :delete_all)
 
       timestamps()
     end

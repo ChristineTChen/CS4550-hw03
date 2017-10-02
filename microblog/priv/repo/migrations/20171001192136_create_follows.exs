@@ -3,8 +3,8 @@ defmodule Microblog.Repo.Migrations.CreateFollows do
 
   def change do
     create table(:follows) do
-      add :follower_user_id, references(:users, on_delete: :nothing)
-      add :following_user_id, references(:users, on_delete: :nothing)
+      add :follower_user_id, references(:users, on_delete: :delete_all)
+      add :following_user_id, references(:users, on_delete: :delete_all)
 
       timestamps()
     end
