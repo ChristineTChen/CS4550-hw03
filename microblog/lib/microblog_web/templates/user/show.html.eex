@@ -1,16 +1,42 @@
 <h2>Welcome to <%= @user.display_name %>'s Profile!</h2>
 
 <div class="col-lg-8 col-sm-6">
+ <div class="well-lg">
+  <div class="card hovercard">
 
-  <div>
-    <h4>Name: <%= @user.name %></h4>
-    <p>
-      Pen name: <%= @user.display_name %>
-      </br>
-      Email: <%= @user.display_email %>
-    </p>
+	<div class="card-body">
+    	  <h4 class="card-title"> <%= @user.name %>'s Bio: </h4>
+	  <p class="card-text">
+	    Pen name: <%= @user.display_name %>
+            </br>
+            Email: <%= @user.email %>
+	  </p>
+
+       </div>
+     
+
+    <div class="btn-pref btn-group btn-group-justified btn-group-lg" role="group" aria-label="...">
+
+      <div class="btn-group" role="group">
+        <span><%= link "Posts", to: post_path(@conn, :index), class: "btn btn-primary" %>
+        </span>
+      </div>
+
+      <div class="btn-group" role="group">
+        <span><%= link "Followers", to: user_path(@conn, :index), class: "btn btn-primary" %>
+        </span>
+      </div>
+
+      <div class="btn-group" role="group">
+        <span><%= link "Following", to: user_path(@conn, :index), class: "btn btn-primary" %>
+        </span>
+      </div>
+   </div>
+
   </div>
 
  </div>
 
 <span><%= link "Back", to: user_path(@conn, :index), class: "btn btn-primary" %></span>
+</div>
+

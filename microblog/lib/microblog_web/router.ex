@@ -25,7 +25,7 @@ defmodule MicroblogWeb.Router do
     resources "/follows", FollowController
     resources "/hashtags", HashtagController
     resources "/tagposts", TagpostController
-    post "/session", SessionController,  :login
+    post "/sessions", SessionController,  :login
     delete "/sessions", SessionController, :logout
   end
 

@@ -14,7 +14,7 @@
 
   <body>
    <nav class="navbar navbar-dark bg-dark navbar-expand-md">
-      <a class="navbar-brand" href="#">Microblog</a>
+      <a class="navbar-brand" href="/posts">Microblog</a>
 
       <button class="navbar-toggler" type="button"
               data-toggle="collapse" data-target="#main-navbar">
@@ -27,17 +27,19 @@
 	      <%= link "Posts", to: post_path(@conn, :index), class: "nav-link" %>
 	  </li>
 	  <li class="nav-item">
-              <%= link "Users", to: user_path(@conn, :index), class: "nav-link" %>
-
+             <%= link "New User", to: user_path(@conn, :new), class: "nav-link" %>
           </li>
         </ul>
       </div>
 
       <%= if @current_user do %>
         <span class="text-light">
-          <%= @current_user.email %> |
+          <%= @current_user.name %> |
           <%= link("logout", to: session_path(@conn, :logout), method: :delete) %>
-        </span>
+        </span> &&
+	<li class="nav-item">
+	  <%= link "User", to: user_path(@conn, :show, @current_user), class: "nav-link"%> </li>
+
       <% else %>
         <%= form_for @conn, session_path(@conn, :login), 
               [as: "user", class: "form-inline w-75"], fn f -> %>
@@ -46,6 +48,7 @@
           <input type="submit" value="Log in" class="btn btn-primary">
         <% end %>
       <% end %>
+
    </nav>
 
     <div class="container">

@@ -1,30 +1,43 @@
 <h2>Listing Users</h2>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Display name</th>
-      <th>Email</th>
-
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
+<div class="col-lg-8 col-sm-6">
 <%= for user <- @users do %>
-    <tr>
-      <td><%= user.name %></td>
-      <td><%= user.display_name %></td>
-      <td><%= user.email %></td>
+ <div class="well-lg">
+  <div class="card hovercard">
 
-      <td class="text-right">
-        <span><%= link "Show", to: user_path(@conn, :show, user), class: "btn btn-default btn-xs" %></span>
-        <span><%= link "Edit", to: user_path(@conn, :edit, user), class: "btn btn-default btn-xs" %></span>
-        <span><%= link "Delete", to: user_path(@conn, :delete, user), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
-      </td>
-    </tr>
+	<div class="card-body">
+    	  <h4 class="card-title"> <%= user.name %>'s Bio: </h4>
+	  <p class="card-text">
+	    Pen name: <%= user.display_name %>
+            </br>
+            Email: <%= user.email %>
+	  </p>
+
+       </div>
+     
+
+    <div class="btn-pref btn-group btn-group-justified btn-group-lg" role="group" aria-label="...">
+
+      <div class="btn-group" role="group">
+        <span><%= link "Profile", to: user_path(@conn, :show, user), class: "btn btn-primary" %>
+        </span>
+      </div>
+
+      <div class="btn-group" role="group">
+        <span><%= link "Posts", to: post_path(@conn, :index), class: "btn btn-primary" %>
+        </span>
+      </div>
+
+      <div class="btn-group" role="group">
+        <span><%= link "Follow", to: user_path(@conn, :show, user), class: "btn btn-primary" %>
+        </span>
+      </div>
+   </div>
+
+  </div>
+
 <% end %>
-  </tbody>
-</table>
+
+ </div>
 
 <span><%= link "New User", to: user_path(@conn, :new) %></span>
