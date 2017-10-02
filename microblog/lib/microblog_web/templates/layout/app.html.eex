@@ -26,9 +26,11 @@
           <li class="nav-item">
 	      <%= link "Posts", to: post_path(@conn, :index), class: "nav-link" %>
 	  </li>
+	<%= if !@current_user do %>
 	  <li class="nav-item">
              <%= link "New User", to: user_path(@conn, :new), class: "nav-link" %>
           </li>
+	<% end %>
         </ul>
       </div>
 
