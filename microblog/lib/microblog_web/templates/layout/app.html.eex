@@ -16,9 +16,9 @@
       <header class="header">
         <nav role="navigation">
           <ul class="nav nav-pills pull-right">
-            <%= link "Users", to: user_path(@conn, :index), class: "nav-link" %>
 	    <%= link "Posts", to: post_path(@conn, :index), class: "nav-link" %>            
-          </ul>
+            <%= link "Sign Up", to: user_path(@conn, :new), class: "nav-link" %>
+	  </ul>
 
         </nav>
         

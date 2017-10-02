@@ -22,4 +22,4 @@
 
 
 
-<span><%= link "Back", to: post_path(@conn, :index), class: "btn btn-link" %></span>
+<span><%= link "Back", to: post_path(@conn, :index), class: "btn btn-primary" %></span>
