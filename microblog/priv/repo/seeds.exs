@@ -38,9 +38,9 @@ Repo.insert!(%Follow{follower_user_id: tg.id, following_user_id: rh.id})
 Repo.insert!(%Follow{follower_user_id: cw.id, following_user_id: cc.id})
 Repo.insert!(%Follow{follower_user_id: cw.id, following_user_id: tg.id})
 
-cc1 = Repo.insert!(%Post{title: "First post", user_id: cc.id, content: "This is the first blog post! Welcome!"})
-cc2 = Repo.insert!(%Post{title: "Doing homework all week", user_id: cc.id, content: "Wow! This week is really hectic. I have a lot of work to do!"})
-tg1 = Repo.insert!(%Post{title: "About me", user_id: tg.id, content: "Hi, I'm a Bio major!"})
+Repo.insert!(%Post{title: "First post", user_id: cc.id, content: "This is the first blog post! Welcome!"})
+Repo.insert!(%Post{title: "Doing homework all week", user_id: cc.id, content: "Wow! This week is really hectic. I have a lot of work to do!"})
+Repo.insert!(%Post{title: "About me", user_id: tg.id, content: "Hi, I'm a Bio major!"})
 
 #hw = Repo.insert!(%Post{tag_name: "#school"})
 #st = Repo.insert!(%Post{tag_name: "#STRESSED"})
