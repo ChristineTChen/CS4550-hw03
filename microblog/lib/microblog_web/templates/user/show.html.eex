@@ -6,6 +6,7 @@
 
 	<div class="card-body">
     	  <h4 class="card-title"> <%= @user.name %>'s Bio: </h4>
+	
 	  <p class="card-text">
 	    Pen name: <%= @user.display_name %>
             </br>
@@ -33,6 +34,12 @@
       </div>
    </div>
 
+      <%= if @current_user && @current_user != @user do %>
+      <div class="btn-group" role="group">
+        <span><%= link "Follow Me!", to: follow_path(@conn, :new, @user), class: "btn btn-success" %>
+        </span>
+      </div>
+      <% end %>
   </div>
 
  </div>

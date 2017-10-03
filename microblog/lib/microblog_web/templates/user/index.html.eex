@@ -23,15 +23,12 @@
         </span>
       </div>
 
+      <%= if @current_user do %>
       <div class="btn-group" role="group">
-        <span><%= link "Posts", to: post_path(@conn, :index), class: "btn btn-primary" %>
+        <span><%= link "Follow", to: follow_path(@conn, :new), class: "btn btn-primary" %>
         </span>
       </div>
-
-      <div class="btn-group" role="group">
-        <span><%= link "Follow", to: user_path(@conn, :show, user), class: "btn btn-primary" %>
-        </span>
-      </div>
+      <% end %>
    </div>
 
   </div>

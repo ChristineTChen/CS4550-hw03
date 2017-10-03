@@ -6,6 +6,12 @@
   <% end %>
 
   <div class="form-group">
-    <%= submit "Submit", class: "btn btn-primary" %>
+    <%= hidden_input f, :follower_user_id, class: "form-control", value: @current_user.id %>
+    <%= error_tag f, :follower_user_id %>
+  </div>
+
+  
+  <div class="form-group">
+    <%= submit "Yes!", class: "btn btn-primary" %>
   </div>
 <% end %>

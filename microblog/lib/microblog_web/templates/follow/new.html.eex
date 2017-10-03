@@ -1,4 +1,4 @@
-<h2>New Follow</h2>
+<h2>Would You Like to Follow This Person?</h2>
 
 <%= render "form.html", Map.put(assigns, :action, follow_path(@conn, :create)) %>
 
