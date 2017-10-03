@@ -28,21 +28,19 @@ They also do not have the ability to write new posts.
 		- User will see & experience the same as the EXISTING USER.
 
 POST: Only logged in users can post. The post will display the USER ID of the poster.
-	- I could not figure out how to show the user's name from its post schema foreign key.
-	- Currently, any user can view the post any other user.
+- I could not figure out how to show the user's name from its post schema foreign key.
+- Currently, any user can view the post any other user.
 
 Follow: The follow button only is visible if you've logged in.
-	- Once you are logged in, you can see a follow button on every user's account card (index or show).
-	- If you click follow on a user, you will be brought to a page that asks for confirmation
-		- if you click "Yes!", it will simulate a successful follow (flaw: however, it isn't being
-			 added to the database correctly because I couldn't figure out how to pass
-			the correct user id that is being followed by current_user)
-		- if you click back, it will take you back to the place (either Users or User Profile)
-	- The follow button is hidden if you are not logged in. 
+- Once you are logged in, you can see a follow button on every user's account card (index or show).
+- If you click follow on a user, you will be brought to a page that asks for confirmation
+	- if you click "Yes!", it will simulate a successful follow (flaw: however, it isn't being added to the database
+	correctly because I couldn't figure out how to pass the correct user id that is being followed by current_user)
+	- if you click back, it will take you back to the place (either Users or User Profile)
+- The follow button is hidden if you are not logged in. 
 
 THINGS TO IMPROVE:
-	- User's profile page should show their posts
-	- Posts should display the author's username instead of ID
-	- Follow form should be able to identify the user being followed (Could not 
-		figure out how to pass that in )
-	- On User Profile, Following & Followers tabs should bring you to list of correct query
+- User's profile page should show their posts
+- Posts should display the author's username instead of ID
+- Follow form should be able to identify the user being followed (Could not figure out how to pass that in )
+- On User Profile, Following & Followers tabs should bring you to list of correct query
