@@ -41,7 +41,7 @@
         <span class="text-light">
           <%= @current_user.name %> |
           <%= link("logout", to: session_path(@conn, :logout), method: :delete) %>
-        </span> &&
+        </span>
 	<li class="nav-item">
 	  <%= link "My Profile", to: user_path(@conn, :show, @current_user), class: "nav-link"%> </li>
 
