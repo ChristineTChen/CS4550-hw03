@@ -26,7 +26,7 @@ defmodule MicroblogWeb.PostController do
   end
 
   def show(conn, %{"id" => id}) do
-    post = Blog.get_post!(id)
+    post = Blog.get_post!(id) |> Microblog.Repo.preload(post, :user)
     render(conn, "show.html", post: post)
   end
 
