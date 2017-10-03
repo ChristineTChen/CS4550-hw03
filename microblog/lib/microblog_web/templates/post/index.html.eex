@@ -7,7 +7,7 @@
 
 
 <h2 class="my-4">Posts Feed</h2>
-<%= for post <- @posts do %>
+<%= for post <- Enum.reverse(@posts) do %>
  <div class="container">
   <div class="row">
     <div class="col-md-12">
