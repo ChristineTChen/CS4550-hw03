@@ -36,7 +36,7 @@
 
       <%= if @current_user && @current_user != @user do %>
       <div class="btn-group" role="group">
-        <span><%= link "Follow Me!", to: follow_path(@conn, :new, @user), class: "btn btn-success" %>
+        <span><%= link "Follow Me!", to: follow_path(@conn, :new), class: "btn btn-success" %>
         </span>
       </div>
       <% end %>
