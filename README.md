@@ -14,15 +14,14 @@ LOGIN/LOGOUT: If no user is logged in, they will only see Posts & New Users
 & Email Login tabs on the navigation bar.
 They also do not have the ability to write new posts.
 
-EXISTING USER:  
-	
+	EXISTING USER:  
 	The user must log in with a valid email that exists in the database.
 		- Once they are logged in, the user will see button to make
 			New Post.
 		- They will see their username with a logout option
 		- They will see a My Profile tab in navigation and can view their profile 
    
-NEW USER:
+	NEW USER:
 	If their email is not registered, they can create a new User by clicking the New User tab. 
 		- User will complete New User form.
 		- User will need to log in with their newly registered email
