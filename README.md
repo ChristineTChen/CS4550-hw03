@@ -27,8 +27,10 @@ They also do not have the ability to write new posts.
 		- User will see & experience the same as the EXISTING USER.
 
 #### POST: Only logged in users can post. The post will display the USER ID of the poster.
-- I could not figure out how to show the user's name from its post schema foreign key.
 - Currently, any user can view the post any other user.
+- The Post index page (homepage) displays the most recent post on top.
+- You can only make posts while logged in.
+- You can only edit and delete your own posts.
 
 #### FOLLOW: The follow button only is visible if you've logged in.
 - Once you are logged in, you can see a follow button on every user's account card (index or show).
@@ -37,9 +39,10 @@ They also do not have the ability to write new posts.
 	correctly because I couldn't figure out how to pass the correct user id that is being followed by current_user)
 	- if you click back, it will take you back to the place (either Users or User Profile)
 - The follow button is hidden if you are not logged in. 
+- You cannot follow yourself (no button on your own profile page)
 
 #### THINGS TO IMPROVE:
 - User's profile page should show their posts
 - Posts should display the author's username instead of ID
-- Follow form should be able to identify the user being followed (Could not figure out how to pass that in )
+- Follow form should be able to identify the user being followed (Could not figure out how to pass the user being followed in )
 - On User Profile, Following & Followers tabs should bring you to list of correct query
