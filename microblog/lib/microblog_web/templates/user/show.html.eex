@@ -34,7 +34,7 @@
       </div>
    </div>
 
-
+      <%= if @current_user && @current_user != @user do %>
 	<%= form_for @follow, follow_path(@conn, :create), fn f -> %>
   	  <%= if @follow.action do %>
     	  <div class="alert alert-danger">
@@ -50,7 +50,7 @@
   	  </div>
 	<% end %>
 
-
+      <% end %>
   </div>
 
  </div>
