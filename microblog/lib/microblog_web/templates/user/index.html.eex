@@ -20,16 +20,10 @@
     <div class="btn-pref btn-group btn-group-justified btn-group-lg" role="group" aria-label="...">
 
     <div class="btn-group" role="group">
-      <span><%= link "Profile", to: user_path(@conn, :show, user), class: "btn btn-primary" %>
+      <span><%= link "Go to Profile", to: user_path(@conn, :show, user), class: "btn btn-primary" %>
       </span>
     </div>
 
-     <%= if @current_user do %>
-      <div class="btn-group" role="group">
-        <span><%= link "Follow", to: follow_path(@conn, :new), class: "btn btn-primary" %>
-        </span>
-      </div>
-      <% end %>
    </div>
 
   </div>

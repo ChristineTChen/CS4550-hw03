@@ -1,8 +1,7 @@
 <h2>Show Follow</h2>
 
 <div class="container">
-
+  <h4> You are following user id:<%= @follow.following_user_id%> </h4>
 </div>
 
-<span><%= link "Edit", to: follow_path(@conn, :edit, @follow) %></span>
 <span><%= link "Back", to: user_path(@conn, :index) %></span>
