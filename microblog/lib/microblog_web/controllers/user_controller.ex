@@ -29,9 +29,14 @@ defmodule MicroblogWeb.UserController do
   def show(conn, %{"id" => id}) do
     user = Accounts.get_user!(id)
     current_user = conn.assigns[:current_user]
-    post = Microblog.Blog.change_post(%Microblog.Blog.Post{user_id: user.id})
-    follow = Accounts.change_follow(%Microblog.Accounts.Follow{follower_user_id: current_user.id, following_user_id: user.id})
-    render(conn, "show.html", current_user: current_user, user: user, post: post, follow: follow)
+
+    if current_user do
+      post = Microblog.Blog.change_post(%Microblog.Blog.Post{user_id: user.id})
+      follow = Accounts.change_follow(%Microblog.Accounts.Follow{follower_user_id: current_user.id, following_user_id: user.id})
+      render(conn, "show.html", current_user: current_user, user: user, post: post, follow: follow)
+    else
+      render(conn, "show.html", user: user)
+    end
   end
 
   def edit(conn, %{"id" => id}) do
