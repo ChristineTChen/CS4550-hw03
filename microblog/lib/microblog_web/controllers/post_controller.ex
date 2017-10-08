@@ -27,7 +27,8 @@ defmodule MicroblogWeb.PostController do
 
   def show(conn, %{"id" => id}) do
     post = Blog.get_post!(id)
-    render(conn, "show.html", post: post)
+    user = Microblog.Accounts.get_user!(post.user_id)
+    render(conn, "show.html", post: post, user: user)
   end
 
   def edit(conn, %{"id" => id}) do

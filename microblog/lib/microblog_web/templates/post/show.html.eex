@@ -7,8 +7,7 @@
 <div>
  
   <div>
-    <p>Posted by user ID: 
-    <%= @post.user_id %> at <%= @post.inserted_at %>
+    <p>Posted by <%= @post.user.name %> at <%= @post.inserted_at %>
     </p>
   </div>
 
