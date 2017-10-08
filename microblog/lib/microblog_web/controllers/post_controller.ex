@@ -6,7 +6,8 @@ defmodule MicroblogWeb.PostController do
 
   def index(conn, _params) do
     posts = Blog.list_posts()
-    render(conn, "index.html", posts: posts)
+    users = Enum.map(posts, fn(s) -> s.user_id end)
+    render(conn, "index.html", posts: posts, users: users)
   end
 
   def new(conn, _params) do
