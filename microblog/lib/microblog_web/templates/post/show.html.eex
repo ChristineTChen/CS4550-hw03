@@ -4,19 +4,50 @@
 </ol>
 <h2><%= @post.title %></h2>
 
-<div>
+<div class="container" >
  
-  <div>
+
+  <div id="post-info">
     <p>Posted by <%= @post.user.name %> at <%= @post.inserted_at %>
     </p>
   </div>
 
-  <div>
+  <div id="show-content">
     <p class="span6" rows="12">
     <%= @post.content %>
     </tp>
+ 
+  <div id="like-bar">
+
+     <div id="post-likes"
+          data-path="<%= like_path(@conn, :index) %>"
+          data-post_id="<%= @post.id %>">
+        &nbsp;
+     </div>
+   
+    <script id="likes-template" type="text/x-handlebars-template">
+      <div class="m-2">
+        <p> Liked by:
+
+        {{#each data}}
+          {{user_name}}, 
+
+	{{else}}
+	  no one yet.
+        {{/each}} </p>                                             
+
+      </div>
+    </script>
+
+    <%= if @current_user do %>
+
+      <button id="like-button" class="btn btn-info" data-user_id="<%= @current_user.id %>" >Like</button>
+      
+    <% end %>
   </div>
 
+  </div>
+</br>
 </div>
 
 <div class="container" >

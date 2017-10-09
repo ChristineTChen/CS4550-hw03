@@ -24,10 +24,34 @@
 	        <span><%= link "Read more...", to: post_path(@conn, :show, post), class: "card-link" %></span>
 	     </p>
 	 </div>
-</div>
+
          <div class="card-footer text-muted">
 	  <p> Posted on <%= post.inserted_at %> by <%= post.user.display_name %> </p>
-	</div>
+          <div id="like-bar">
+     	    <div id="post-likes"
+              data-path="<%= like_path(@conn, :index) %>"
+              data-post_id="<%= post.id %>">
+              &nbsp;
+            </div>
+   
+    <script id="likes-template" type="text/x-handlebars-template">
+      <div class="m-2">
+        <p> Liked by:
+
+        {{#each data}}
+          {{user_name}}, 
+
+	{{else}}
+	  no one yet.
+        {{/each}} </p>                                             
+
+      </div>
+    </script>
+  </div>
+    </div>
+      </div>
+
+
       </div>
     </div>
    </div>
