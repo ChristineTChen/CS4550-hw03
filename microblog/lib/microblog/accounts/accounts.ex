@@ -220,7 +220,7 @@ defmodule Microblog.Accounts do
     |> Repo.preload(:user)
   end
 
-  def list_post_likes(post_id) do
+  def list_user_likes(post_id) do
     Repo.all(from l in Like, where: l.post_id == ^post_id)
     |> Repo.preload(:user)
   end

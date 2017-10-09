@@ -13,14 +13,15 @@ defmodule MicroblogWeb.LikeView do
   def render("like.json", %{like: like}) do
     data = %{
       id: like.id,
-      user_id: like.user_id,
       post_id: like.post_id,
+      user_id: like.user_id,
     }
 
     if Ecto.assoc_loaded?(like.user) do
-      Map.put(data, :user_email, like.user.email)
+      Map.put(data, :user_name, like.user.name)
     else
       data
     end
+
   end
 end
