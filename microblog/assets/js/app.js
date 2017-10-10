@@ -40,11 +40,12 @@ $(function() {
   let bb = $($("#like-button")[0]);
   let u_id = bb.data('user_id');
 
-  let aa = $($("#unlike-button")[0]);
+  let all_data;
 
   function fetch_likes() {
     function got_likes(data) {
       console.log(data);
+      all_data = data;
       let html = tmpl(data);
       dd.html(html);
     }
@@ -61,6 +62,7 @@ $(function() {
 
   function like_post() {
     let data = {like: {post_id: p_id, user_id: u_id}};
+console.log('running     like');
 
     $.ajax({
       url: path,
@@ -73,7 +75,43 @@ $(function() {
 
   }
 
-  bb.click(like_post);
+  function unlike_post() {
+    for (var i = 0; i < all_data.data.length; i++) {
+      if (current_Id == all_data.data[i].user_id) {
+	
+        $.ajax({
+          url: path + "/" + all_data.data[i].id,
+          contentType: "application/json",
+          dataType: "json",
+          method: "DELETE",
+          success: fetch_likes,
+        });
+
+        return;
+      }
+    }
+
+  }
+
+  function button() {
+
+    console.log(all_data)
+    console.log(current_Id)
+    for (var i = 0; i < all_data.data.length; i++) {
+
+      if (current_Id == all_data.data[i].user_id) {
+	bb.html('Like');
+        unlike_post();
+        return;
+      }
+    }
+   
+   bb.html('Unlike');
+   like_post();
+    
+  }
+
+  bb.click(button);
   fetch_likes();
 
 });

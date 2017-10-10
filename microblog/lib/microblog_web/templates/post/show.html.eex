@@ -1,3 +1,9 @@
+<%= if @current_user do %>
+<script type="text/javascript">
+  window.current_Id = <%= @current_user.id %>;
+</script>
+<% end %>
+
 <ol class="breadcrumb">
   <li class="breadcrumb-item"><%= link("Posts", to: post_path(@conn, :index)) %></li>
   <li class="breadcrumb-item active"><%= @post.title %></li>
