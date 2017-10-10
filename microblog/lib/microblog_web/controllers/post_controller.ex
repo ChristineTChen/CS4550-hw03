@@ -29,7 +29,15 @@ defmodule MicroblogWeb.PostController do
   def show(conn, %{"id" => id}) do
     post = Blog.get_post!(id)
     user = Microblog.Accounts.get_user!(post.user_id)
-    render(conn, "show.html", post: post, user: user)
+    current_user = conn.assigns[:current_user]
+
+    if current_user do
+      user_liked_post = Microblog.Accounts.user_liked_post?(current_user.id, post.id)
+      render(conn, "show.html", post: post, user: user, user_liked_post: user_liked_post)
+
+    else
+      render(conn, "show.html", post: post, user: user)
+    end 
   end
 
   def edit(conn, %{"id" => id}) do

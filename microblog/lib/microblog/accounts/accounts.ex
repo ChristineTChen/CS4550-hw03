@@ -225,6 +225,15 @@ defmodule Microblog.Accounts do
     |> Repo.preload(:user)
   end
 
+
+  @doc """
+  Returns count if user liked the post
+  """
+  def user_liked_post?(user_id, post_id) do
+    Repo.all(from l in Like, where: l.post_id == ^post_id and l.user_id == ^user_id, select: count(l.id)) 
+  end
+
+
   @doc """
   Gets a single like.
 
