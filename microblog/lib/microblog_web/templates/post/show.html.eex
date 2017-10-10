@@ -40,10 +40,8 @@
     </script>
 
     <%= if @current_user do %>
-      <%= if @user_liked_post == 0 do %>
+      <%= if @user_liked_post do %>
         <button id="like-button" class="btn btn-info" data-user_id="<%= @current_user.id %>" >Like</button>
-      <% else %>
-        <button id="unlike-button" class="btn btn-warning" data-user_id="<%= @current_user.id %>" >Unlike</button>
         
       <% end %>
     <% end %>

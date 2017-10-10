@@ -32,9 +32,9 @@ defmodule MicroblogWeb.PostController do
     current_user = conn.assigns[:current_user]
 
     if current_user do
-      user_liked_post = Microblog.Accounts.user_liked_post?(current_user.id, post.id)
+      user_liked = Microblog.Accounts.user_liked_post?(current_user.id, post.id)
+      user_liked_post = user_liked
       render(conn, "show.html", post: post, user: user, user_liked_post: user_liked_post)
-
     else
       render(conn, "show.html", post: post, user: user)
     end 
