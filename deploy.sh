@@ -5,11 +5,12 @@ export PORT=4000
 DIR=$1
 
 if [ ! -d "$DIR"]; then
-  printf "Usage: ./deploy.sh  <path>, <path> is the path of the repo. \n"
+  printf "Usage: ./deploy.sh  <path of the repo> \n"
   exit
 fi
 
-echo "Deploy to [$DIR]"
+echo "Deploying Microblog..."
+cd $DIR
 mix ecto.migrate
 mix deps.get
 (cd assets && npm install)
