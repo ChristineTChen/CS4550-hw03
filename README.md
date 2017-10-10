@@ -7,7 +7,7 @@
 
 ### HW 05
 
-#### LIKES: Users must be logged in to see the Like button
+#### LIKES: Users must be logged in to see the Like button (Located in Accounts)
 - Likes are visible when viewing a post
 - If the current_user has liked a post, they will not see the Like button.
 - Like button should toggle to Unlike if current_user has already liked.
