@@ -13,6 +13,7 @@
 
 
   <body>
+   <!-- Attribution: Nav bar from lecture code-->
    <nav class="navbar navbar-dark bg-dark navbar-expand-md">
       <a class="navbar-brand" href="/posts">Microblog</a>
 
