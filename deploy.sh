@@ -15,7 +15,7 @@ mix ecto.migrate
 mix deps.get
 (cd assets && npm install)
 (cd assets && ./node_modules/brunch/bin/brunch b -p)
-mix release
+mix release.init
 mix phx.digest
 env MIX_ENV=prod mix release --env=prod
 
