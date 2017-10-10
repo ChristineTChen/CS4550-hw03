@@ -41,7 +41,6 @@ $(function() {
   let u_id = bb.data('user_id');
 
   let aa = $($("#unlike-button")[0]);
-  let u_id = aa.data('user_id');
 
   function fetch_likes() {
     function got_likes(data) {
