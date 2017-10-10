@@ -9,10 +9,10 @@
 
 #### LIKES: Users must be logged in to see the Like button
 - Likes are visible when viewing a post
+- If the current_user has liked a post, they will not see the Like button.
+- Like button should toggle to Unlike if current_user has already liked.
 - Likes are added to the index view of a post, but only appears for the first post
 
-- Currently, users can like a post more than once, but I tried adding a restraint (user_liked_post). It currently doesn't work. The user_liked_post? (in lib/microblog/accounts/accounts.ex) gets a count of likes where the user_id is the current user and post_id is the current post being viewed. However, when checking for user_liked_post != 0 in (templates/post/show.html.eex), it still shows the Like button regardless if current user has liked the post.
-- Later implementation: Like button should toggle to Unlike if current_user has already liked.
 
 #### Deploy Script
 Attribution: Professor Nat Tuck's deploy script for numart code was used for this deploy script with some changes.
@@ -21,8 +21,6 @@ Attribution: Professor Nat Tuck's deploy script for numart code was used for thi
 - I wrote my deploy.sh script to be run on the server, so you must clone the project repo and pull & update.
 - TO RUN DEPLOY SCRIPT, <path> is where the project path. If you've cloned my repo, it should be CS4550-hw03/microblog
   $ ./deploy <path>
-
-
 
 
 
