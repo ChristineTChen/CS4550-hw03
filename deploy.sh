@@ -4,7 +4,7 @@ export PORT=4000
 DIR=$1
 
 if [ ! -d "$DIR"]; then
-  printf "Usage: ./deploy.sh /CS4550-hw03/microblog \n"
+  printf "Usage: ./deploy.sh  <path>, <path> is the path of the repo. \n"
   exit
 fi
 
@@ -18,7 +18,7 @@ mix phx.digest
 env MIX_ENV=prod mix release --env=prod
 
 
-$DIR/bin/microblog stop || true
+_build/prod/rel/microblog/bin/microblog stop || true
 
 
 env PORT=4000 _build/prod/rel/microblog/bin/microblog start
