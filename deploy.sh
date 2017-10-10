@@ -1,4 +1,5 @@
 #!/bin/bash
+# Attribution: Professor Nat Tuck's deploy.sh script on lecture code
 
 export PORT=4000
 DIR=$1
