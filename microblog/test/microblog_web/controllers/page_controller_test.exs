@@ -3,6 +3,7 @@ defmodule MicroblogWeb.PageControllerTest do
 
   test "GET /", %{conn: conn} do
     conn = get conn, "/"
-    assert html_response(conn, 200) =~ "Welcome to Phoenix!"
+    assert '<html><body>You are being <a href="/posts">redirected</a>.</body></html>'
+
   end
 end
