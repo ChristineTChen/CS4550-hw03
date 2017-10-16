@@ -1,4 +1,5 @@
-// Attribution hexdocs.pm/phoenix/channels.html
+// Attribution hexdocs.pm/phoenix/channels.html &
+// Ryan Hughes helped me with JS 
 
 // NOTE: The contents of this file will only be executed if
 // you uncomment its entry in "assets/js/app.js".
