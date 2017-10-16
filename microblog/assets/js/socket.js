@@ -73,7 +73,7 @@ function liveFeedUpdate(post) {
 	              '</p>' +
 	            '</div>' +
 	            '<div class="card-footer text-muted">' +
-	             '<p> Posted on ${post.inserted_at}by ' + post.user_id + ' </p>' +
+	             '<p> Posted by ' + post.user_id + ' </p>' +
 	        '</div>' +
 	      '</div>' +
 	    '</div>' +
