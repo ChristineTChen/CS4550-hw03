@@ -1,6 +1,10 @@
 <%= if @current_user do %>
 <script type="text/javascript">
   window.current_Id = <%= @current_user.id %>;
+  window.post_id = <%= @post.id %>;
+  window.post_title = "<%= @post.title %>";
+  window.post_content = "<%= @post.content %>";
+  window.post_user = <%= @post.user_id %>;
 </script>
 <% end %>
 

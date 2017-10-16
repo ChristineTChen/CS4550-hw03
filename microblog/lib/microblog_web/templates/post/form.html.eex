@@ -4,7 +4,7 @@
       <p>Oops, something went wrong! Please check the errors below.</p>
     </div>
   <% end %>
-
+<div id="messages" class="container"></div>
   <div class="form-group">
     <%= label f, :title, class: "control-label" %>
     <%= text_input f, :title, class: "form-control" %>
@@ -23,7 +23,7 @@
     <%= error_tag f, :user_id %>
   </div>
 
-  <div class="form-group">
+  <div id="post-publish" class="form-group">
     <%= submit "Publish", class: "btn btn-success" %>
   </div>
 <% end %>

@@ -51,12 +51,74 @@ let socket = new Socket("/socket", {params: {token: window.userToken}})
 // Finally, pass the token on connect as below. Or remove it
 // from connect if you don't care about authentication.
 
-socket.connect()
 
+function liveFeedUpdate(post) {
+	let post_index = $('#post-entries')
+
+    if(post_index) {
+    
+
+	let update_post =  '<div class="container">' +
+	'<div class="row">' +
+	  '<div class="col-md-12">' +
+        '<div class="card">' +
+         '<div class="card-block">' +
+            '<div class="well well-lg">' +
+              '<div class="card-body">' +
+                '<h3 class="card-title">' + post.title + '</h3>' +
+              '<p class="card-text">' + post.content +
+              '</p>' +
+            '</div>' +
+            '<div class="card-footer text-muted">' +
+             '<p> Posted on ${post.inserted_at}by ' + post.user_id + ' </p>' +
+        '</div>' +
+      '</div>' +
+    '</div>' +
+    '</div>'
+
+
+    post_index.prepend($(update_post))
+	} else {
+		console.error("CANNOT RENDER NEW POST")
+	} 
+}
+
+socket.connect()
 // Now that you are connected, you can join channels with a topic:
-let channel = socket.channel("topic:subtopic", {})
+let channel = socket.channel("updates:lobby", {})
+
+channel.on("ping", liveFeedUpdate);
+console.log("update feed");
+
+
+var post_path = location.pathname.startsWith("/posts")
+var new_post = location.hash == "#newPost"
+
+function onLoad() {
+
+	if(post_path && new_post) {
+
+	    let postId = post_id
+	    let title = post_title
+	    let content = post_content
+	    let user = post_user
+
+		channel.push("ping", {
+			id: postId,
+			user_id: user,
+			title: title,
+			content: content
+		});
+		// Prevent duplicate sends to websocket
+		window.location.hash = '';
+	}
+}
+
+$(onLoad)
+
+
 channel.join()
   .receive("ok", resp => { console.log("Joined successfully", resp) })
   .receive("error", resp => { console.log("Unable to join", resp) })
 
-export default socket
+export default socket;
