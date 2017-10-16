@@ -1,3 +1,6 @@
+// ATTRIBUTION: I got help from Ryan Hughes with JS (see onLoad())
+// & Prof N.Tuck's lecture DRAW code
+
 // NOTE: The contents of this file will only be executed if
 // you uncomment its entry in "assets/js/app.js".
 
@@ -52,31 +55,32 @@ let socket = new Socket("/socket", {params: {token: window.userToken}})
 // from connect if you don't care about authentication.
 
 
+
 function liveFeedUpdate(post) {
 	let post_index = $('#post-entries')
 
     if(post_index) {
 
-	let update_post =  '<div class="container">' +
-	'<div class="row">' +
-	  '<div class="col-md-12">' +
-        '<div class="card">' +
-         '<div class="card-block">' +
-            '<div class="well well-lg">' +
-              '<div class="card-body">' +
-                '<h3 class="card-title">' + post.title + '</h3>' +
-              '<p class="card-text">' + post.content +
-              '</p>' +
-            '</div>' +
-            '<div class="card-footer text-muted">' +
-             '<p> Posted on ${post.inserted_at}by ' + post.user_id + ' </p>' +
-        '</div>' +
-      '</div>' +
-    '</div>' +
-    '</div>'
+		let update_post =  '<div class="container">' +
+		'<div class="row">' +
+		  '<div class="col-md-12">' +
+	        '<div class="card">' +
+	         '<div class="card-block">' +
+	            '<div class="well well-lg">' +
+	              '<div class="card-body">' +
+	                '<h3 class="card-title">' + post.title + '</h3>' +
+	              '<p class="card-text">' + post.content +
+	              '</p>' +
+	            '</div>' +
+	            '<div class="card-footer text-muted">' +
+	             '<p> Posted on ${post.inserted_at}by ' + post.user_id + ' </p>' +
+	        '</div>' +
+	      '</div>' +
+	    '</div>' +
+	    '</div>'
 
 
-    post_index.prepend($(update_post))
+	    post_index.prepend($(update_post))
 	} else {
 		console.error("CANNOT RENDER NEW POST")
 	} 
@@ -92,7 +96,6 @@ var new_post = location.hash == "#newPost"
 function onLoad() {
 
 	if(post_path && new_post) {
-
 	    let postId = post_id
 	    let title = post_title
 	    let content = post_content
