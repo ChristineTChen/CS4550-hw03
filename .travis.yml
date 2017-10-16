@@ -1,0 +1,9 @@
+# Attribution: Prof. NTuck's .travis.yml lecture code
+
+language: elixir
+elixir:
+  - 1.5.2
+opt_release:
+  - 20.1
+before_script:
+  - mix test
