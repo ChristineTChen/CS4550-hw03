@@ -56,7 +56,6 @@ function liveFeedUpdate(post) {
 	let post_index = $('#post-entries')
 
     if(post_index) {
-    
 
 	let update_post =  '<div class="container">' +
 	'<div class="row">' +
@@ -84,12 +83,8 @@ function liveFeedUpdate(post) {
 }
 
 socket.connect()
-// Now that you are connected, you can join channels with a topic:
+// Now that you are connected, you update feeds page in realtime:
 let channel = socket.channel("updates:lobby", {})
-
-channel.on("ping", liveFeedUpdate);
-console.log("update feed");
-
 
 var post_path = location.pathname.startsWith("/posts")
 var new_post = location.hash == "#newPost"
@@ -121,4 +116,5 @@ channel.join()
   .receive("ok", resp => { console.log("Joined successfully", resp) })
   .receive("error", resp => { console.log("Unable to join", resp) })
 
+channel.on("ping", liveFeedUpdate);
 export default socket;
