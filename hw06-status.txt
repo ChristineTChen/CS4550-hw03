@@ -1,0 +1,38 @@
+CS4550 Web Dev, Fall 2017.
+
+HW06 status report form.
+
+Please answer the following questions and submit the filled-in file to Bottlenose.
+
+
+1. What's your name?
+	Christine Chen
+
+2. What's the link to your Github repo's releases page?
+	https://github.com/ChristineTChen/CS4550-hw03/releases/tag/HW06
+
+3. What's the link to your deployed Microblog app?
+	microblog.christinetchen.com
+	OR
+	blogger.christinetchen.com (just a unique domain name)
+
+4. What's the link to the Travis CI build for the version of your app
+   that you made a release of? You can find this on Travis under "Build History".
+    https://travis-ci.org/ChristineTChen/CS4550-hw03/builds/288404157 
+
+5. Did you successfully deploy? If not, what doesn't work?
+	Yes, I successfully deployed!
+
+
+6. Did you successfully implement live updates? If not, what doesn't work?
+	Yes, I successfully implemented live updates.
+
+
+7. Did Prof. Tuck give you any alternate / additional goals for this assignment?
+   If so, what were they and how well did you complete them with your submission?
+   No.
+
+
+8. Is there any other useful information that you want to provide for grading?
+	Not really.
+
