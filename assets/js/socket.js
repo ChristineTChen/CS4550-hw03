@@ -1,5 +1,4 @@
-// ATTRIBUTION: I got help from Ryan Hughes with JS (see onLoad())
-// & Prof N.Tuck's lecture DRAW code
+// Attribution hexdocs.pm/phoenix/channels.html
 
 // NOTE: The contents of this file will only be executed if
 // you uncomment its entry in "assets/js/app.js".
@@ -54,70 +53,68 @@ let socket = new Socket("/socket", {params: {token: window.userToken}})
 // Finally, pass the token on connect as below. Or remove it
 // from connect if you don't care about authentication.
 
-
-
-function liveFeedUpdate(post) {
-	let post_index = $('#post-entries')
-
-    if(post_index) {
-
-		let update_post =  '<div class="container">' +
-		'<div class="row">' +
-		  '<div class="col-md-12">' +
-	        '<div class="card">' +
-	         '<div class="card-block">' +
-	            '<div class="well well-lg">' +
-	              '<div class="card-body">' +
-	                '<h3 class="card-title">' + post.title + '</h3>' +
-	              '<p class="card-text">' + post.content +
-	              '</p>' +
-	            '</div>' +
-	            '<div class="card-footer text-muted">' +
-	             '<p> Posted by ' + post.user_id + ' </p>' +
-	        '</div>' +
-	      '</div>' +
-	    '</div>' +
-	    '</div>'
-
-
-	    post_index.prepend($(update_post))
-	} else {
-		console.error("CANNOT RENDER NEW POST")
-	} 
-}
-
 socket.connect()
 // Now that you are connected, you update feeds page in realtime:
 let channel = socket.channel("updates:lobby", {})
 
+
 var post_path = location.pathname.startsWith("/posts")
 var new_post = location.hash == "#newPost"
+let post_entries= $("#post-entries")
 
-function onLoad() {
-
-	if(post_path && new_post) {
-	    let postId = post_id
-	    let title = post_title
-	    let content = post_content
-	    let user = post_user
-
-		channel.push("ping", {
-			id: postId,
-			user_id: user,
-			title: title,
-			content: content
-		});
-		// Prevent duplicate sends to websocket
-		window.location.hash = '';
-	}
+function resetHash() {
+	window.location.hash ='';
 }
 
-$(onLoad)
+let postId
+let title
+let content
+let user
 
+function onLoad() {
+	if (post_path && new_post) {
+		postId = post_id
+		title = post_title
+		content = post_content
+		user = post_user
+		channel.push("new_msg", {id: postId, user_id: 
+			user, title: title, content: content });
+		resetHash();
+	}
+
+}
+
+channel.on("new_msg", payload => {
+	let update_post = `  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-block">
+            <div class="well well-lg">
+              <div class="card-body">
+                <h3 class="card-title">${payload.title}</h3>
+              	  <p class="card-text">
+                	${payload.content}
+              	  </p>
+           	  </div>
+              <div class="card-footer text-muted">
+             	<p> Posted just now by ${payload.user_id} </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>`
+
+  post_entries.prepend(update_post)
+})
+
+$(onLoad)
 
 channel.join()
   .receive("ok", resp => { console.log("Joined successfully", resp) })
   .receive("error", resp => { console.log("Unable to join", resp) })
 
-channel.on("ping", liveFeedUpdate);
+//channel.on("new_msg", liveFeedUpdate);
 export default socket;
