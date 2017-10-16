@@ -6,4 +6,4 @@ elixir:
 opt_release:
   - 20.1
 before_script:
-  - mix test
+  - cd microblog;  mix test
