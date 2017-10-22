@@ -9,6 +9,8 @@ defmodule Microblog.Accounts.User do
     field :email, :string
     field :name, :string
 
+    field :admin_status, :boolean
+
     field :password_hash, :string
     field :pw_tries, :integer
     field :pw_last_try, :utc_datetime
@@ -22,11 +24,11 @@ defmodule Microblog.Accounts.User do
   @doc false
   def changeset(%User{} = user, attrs) do
     user
-    |> cast(attrs, [:name, :display_name, :email, :password, :password_confirmation])
+    |> cast(attrs, [:name, :display_name, :email, :password, :password_confirmation, :admin_status])
     |> validate_confirmation(:password)
     |> validate_password(:password)
     |> put_pass_hash()
-    |> validate_required([:name, :display_name, :email, :password_hash])
+    |> validate_required([:name, :display_name, :email, :password_hash, :admin_status])
   end
 
   # Password validation

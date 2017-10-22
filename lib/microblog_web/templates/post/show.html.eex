@@ -64,7 +64,7 @@
 <div class="container" >
 <span><%= link "Back", to: post_path(@conn, :index), class: "btn btn-primary" %></span>
 
-<%= if @current_user && @post.user_id==@current_user.id do %>
+<%= if (@current_user && @post.user_id==@current_user.id )|| (@current_user.admin_status) do %>
   <span>
     <%= link "Edit", to: post_path(@conn, :edit, @post), class: "btn btn-warning" %>
   </span>
