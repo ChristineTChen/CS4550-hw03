@@ -50,5 +50,5 @@ defmodule Microblog.Accounts.User do
   end
 
   def valid_password?(_), do: {:error, "The password is too short"}
-
+  
 end

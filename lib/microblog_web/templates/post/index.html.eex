@@ -3,7 +3,7 @@
   <%= if @current_user do %>
 
   <span><%= link "New Post", to: post_path(@conn, :new), class: "btn btn-primary" %></span>
-  <% end %>
+
 
 
   <h2 class="my-4">Posts Feed</h2>
@@ -62,5 +62,5 @@
 </div>
 </ br>
 <% end %>
-
+<% end %>
 </div>
