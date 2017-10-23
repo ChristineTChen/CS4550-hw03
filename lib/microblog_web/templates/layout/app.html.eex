@@ -15,7 +15,7 @@
 <body>
 
  <!-- Attribution: Nav bar from lecture code-->
- <nav class="navbar navbar-dark bg-dark navbar-expand-md">
+ <nav class="navbar navbar-custom navbar-expand-md">
   <%= if @current_user do %>
   <a class="navbar-brand" href="/posts">Microblog</a>
   <% else %>
@@ -25,7 +25,7 @@
   <button class="navbar-toggler" type="button"
   data-toggle="collapse" data-target="#main-navbar">
   <span class="navbar-toggler-icon"></span>
-</button>
+  </button>
 
 <%= if @current_user do %>
 <div class="collapse navbar-collapse" id="main-navbar">
@@ -41,7 +41,7 @@
 
 
 <span class="text-light">
-  <%= @current_user.name %> |
+  <strong><%= @current_user.name %></strong> |
   <%= link("logout", to: session_path(@conn, :logout), method: :delete) %>
 </span>
 <li class="nav-item">

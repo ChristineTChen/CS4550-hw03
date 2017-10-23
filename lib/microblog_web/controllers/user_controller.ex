@@ -51,7 +51,9 @@ defmodule MicroblogWeb.UserController do
       follow = Accounts.change_follow(%Microblog.Accounts.Follow{follower_user_id: current_user.id, following_user_id: user.id})
       render(conn, "show.html", current_user: current_user, user: user, post: post, follow: follow)
     else
-      render(conn, "show.html", user: user)
+      conn
+      |> redirect(to: "/")
+      |> halt()
     end
   end
 

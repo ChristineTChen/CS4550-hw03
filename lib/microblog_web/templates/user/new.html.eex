@@ -1,4 +1,9 @@
-<h2>New User</h2>
+<div class="container">
 
+<h1 align="center"> Welcome to Microblog!</h1>
+</br>
+<h3>Register a New Account</h3>
+
+</div>
 <%= render "form.html", Map.put(assigns, :action, user_path(@conn, :create)) %>
 

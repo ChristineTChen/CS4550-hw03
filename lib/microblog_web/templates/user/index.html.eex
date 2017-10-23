@@ -1,35 +1,37 @@
 <h2>Listing Users</h2>
 
 <div class="col-lg-8 col-sm-6">
-<%= for (user <- @users) do %>
+  <%= for (user <- @users) do %>
   <%= if @current_user != user do %>
-   <div class="well-lg">
+  <div class="well-lg">
     <div class="card hovercard">
 
-	<div class="card-body">
-    	  <h4 class="card-title"> <%= user.name %>'s Bio: </h4>
-	  <p class="card-text">
-	    Pen name: <%= user.display_name %>
-            </br>
-            Email: <%= user.email %>
-	  </p>
+     <div class="card-body">
+       <h4 class="card-title"> <%= user.name %>'s Bio: </h4>
+       <p class="card-text">
+         Pen name: <%= user.display_name %>
+       </br>
+       Email: <%= user.email %>
+     </p>
 
-       </div>
-     
+   </div>
 
-    <div class="btn-pref btn-group btn-group-justified btn-group-lg" role="group" aria-label="...">
+
+   <div class="btn-pref btn-group btn-group-justified btn-group-lg" role="group" aria-label="...">
 
     <div class="btn-group" role="group">
       <span><%= link "Go to Profile", to: user_path(@conn, :show, user), class: "btn btn-primary" %>
       </span>
     </div>
 
-   </div>
-
   </div>
-  <% end %>
+
+
+</div>
+</br>
+<% end %>
 <% end %>
 
- </div>
+</div>
 
 <span><%= link "New User", to: user_path(@conn, :new) %></span>

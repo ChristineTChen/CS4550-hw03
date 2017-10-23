@@ -32,7 +32,6 @@
               <div id="post-likes"
               data-path="<%= like_path(@conn, :index) %>"
               data-post_id="<%= post.id %>">
-              &nbsp;
             </div>
 
             <script id="likes-template" type="text/x-handlebars-template">
@@ -54,6 +53,7 @@
     </div>
 
   </div>
+</br>
 </div>
 
 </div>
