@@ -28,7 +28,7 @@ defmodule Microblog.Accounts.User do
     |> validate_confirmation(:password)
     |> validate_password(:password)
     |> put_pass_hash()
-    |> validate_required([:name, :display_name, :email, :password_hash, :admin_status])
+    |> validate_required([:name, :display_name, :email, :password_hash])
   end
 
   # Password validation
