@@ -6,13 +6,29 @@ defmodule MicroblogWeb.PostController do
 
   def index(conn, _params) do
     posts = Blog.list_posts()
-    users = Enum.map(posts, fn(s) -> s.user_id end)
-    render(conn, "index.html", posts: posts, users: users)
+    current_user = conn.assigns[:current_user]
+    if current_user do 
+      users = Enum.map(posts, fn(s) -> s.user_id end)
+      render(conn, "index.html", posts: posts, users: users)
+    else
+      conn 
+      |> redirect(to: "/users/new")
+      |> halt()
+
+    end
   end
 
   def new(conn, _params) do
-    changeset = Blog.change_post(%Post{})
-    render(conn, "new.html", changeset: changeset)
+    current_user = conn.assigns[:current_user]
+    if current_user do 
+      changeset = Blog.change_post(%Post{})
+      render(conn, "new.html", changeset: changeset)
+    else
+      conn 
+      |> redirect(to: "/users/new")
+      |> halt()
+
+    end
   end
 
   def create(conn, %{"post" => post_params}) do
@@ -36,14 +52,24 @@ defmodule MicroblogWeb.PostController do
       user_liked_post = user_liked
       render(conn, "show.html", post: post, user: user, user_liked_post: user_liked_post)
     else
-      render(conn, "show.html", post: post, user: user)
+      conn 
+      |> redirect(to: "/users/new")
+      |> halt()
     end 
   end
 
   def edit(conn, %{"id" => id}) do
     post = Blog.get_post!(id)
-    changeset = Blog.change_post(post)
-    render(conn, "edit.html", post: post, changeset: changeset)
+    current_user = conn.assigns[:current_user]
+    if current_user do 
+      changeset = Blog.change_post(post)
+      render(conn, "edit.html", post: post, changeset: changeset)
+    else
+      conn 
+      |> redirect(to: "/users/new")
+      |> halt()
+
+    end
   end
 
   def update(conn, %{"id" => id, "post" => post_params}) do
