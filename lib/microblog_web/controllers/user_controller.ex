@@ -7,12 +7,28 @@ defmodule MicroblogWeb.UserController do
 
   def index(conn, _params) do
     users = Accounts.list_users()
-    render(conn, "index.html", users: users)
+    current_user = conn.assigns[:current_user]
+    if current_user do 
+      render(conn, "index.html", users: users)
+    else
+      conn 
+      |> redirect(to: "/")
+      |> halt()
+
+    end
   end
 
   def new(conn, _params) do
-    changeset = Accounts.change_user(%User{})
-    render(conn, "new.html", changeset: changeset)
+    current_user = conn.assigns[:current_user]
+    if !current_user do 
+      changeset = Accounts.change_user(%User{})
+      render(conn, "new.html", changeset: changeset)
+    else
+      conn 
+      |> redirect(to: "/posts")
+      |> halt()
+
+    end
   end
 
   def create(conn, %{"user" => user_params}) do
@@ -41,8 +57,23 @@ defmodule MicroblogWeb.UserController do
 
   def edit(conn, %{"id" => id}) do
     user = Accounts.get_user!(id)
-    changeset = Accounts.change_user(user)
-    render(conn, "edit.html", user: user, changeset: changeset)
+    current_user = conn.assigns[:current_user]
+    if current_user do 
+      if current_user.admin_status || current_user.id == user.id do
+        changeset = Accounts.change_user(user)
+        render(conn, "edit.html", user: user, changeset: changeset)
+      else
+        conn
+        |> redirect(to: "/posts")
+        |> halt()
+      end
+
+    else
+      conn 
+      |> redirect(to: "/users/new")
+      |> halt()
+
+    end
   end
 
   def update(conn, %{"id" => id, "user" => user_params}) do
